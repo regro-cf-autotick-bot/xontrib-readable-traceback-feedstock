@@ -1,5 +1,5 @@
 {% set name = "xontrib-readable-traceback" %}
-{% set version = "0.3.2" %}
+{% set version = "0.4.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: d43feeca2037035767f483da9238a085c9194f9232d9638cae80642cca7f1593
+  sha256: b5e841f0aa32dc941741cda784b67d5a4434352a4b9ffdd2da2cdb1dce850ebf
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -33,7 +33,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'Make traceback easier to see for xonsh'
+  summary: Make traceback easier to see for xonsh
 
 extra:
   recipe-maintainers:
