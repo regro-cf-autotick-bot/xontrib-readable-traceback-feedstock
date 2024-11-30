@@ -6,25 +6,27 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: d43feeca2037035767f483da9238a085c9194f9232d9638cae80642cca7f1593
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
-    - python
+    - python {{ python_min }}
     - pip
   run:
-    - python
+    - python >={{ python_min }}
     - colorama
     - python-backtrace
     - xonsh
 
 test:
+  requires:
+    - python {{ python_min }}
   commands:
     - test -f "${SP_DIR}/xontrib/readable-traceback.xsh"
 
